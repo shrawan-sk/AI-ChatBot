@@ -1,73 +1,150 @@
+/* General Body Styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f3f4f6;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff); /* Soft gradient */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
+/* Chat Container */
 .chat-container {
-    width: 400px;
+    width: 550px; /* Slightly wider */
+    height: 750px; /* Taller for more space */
     background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 1s ease-in-out;
 }
 
+/* Heading */
 h1 {
-    background: #4a90e2;
+    background: linear-gradient(to right, #4A90E2, #50C9C3);
     color: white;
     text-align: center;
     margin: 0;
-    padding: 15px;
+    padding: 20px;
+    font-size: 28px;
+    letter-spacing: 1px;
 }
 
+/* Chat Box */
 .chat-box {
-    padding: 15px;
-    height: 400px;
+    padding: 20px;
+    height: 600px; /* Increased height */
     overflow-y: auto;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between messages */
+    animation: slideIn 0.8s ease-in-out;
 }
 
+/* Message Styling */
 .message {
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 12px 15px;
+    border-radius: 12px;
     max-width: 70%;
+    word-wrap: break-word;
+    animation: popUp 0.5s ease-in-out;
 }
 
 .message.User {
-    background: #d1ecf1;
-    margin-left: auto;
+    background: #e0f7fa; /* Soft blue for user */
+    color: #006064;
+    align-self: flex-end;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .message.AI {
-    background: #f8d7da;
-    margin-right: auto;
+    background: #ffe6e6; /* Soft pink for AI */
+    color: #b71c1c;
+    align-self: flex-start;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Typing Indicator */
+.typing-indicator {
+    font-style: italic;
+    color: gray;
+    text-align: center;
+    margin-bottom: 10px;
+    animation: blink 1.5s infinite;
+}
+
+/* Input Container */
 .input-container {
     display: flex;
-    padding: 10px;
-    background: #f3f4f6;
+    margin-top: auto;
+    padding: 15px;
+    background: #f5f5f5;
 }
 
 input {
     flex-grow: 1;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #ddd;
     border-radius: 5px 0 0 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.5);
 }
 
 button {
-    background: #4a90e2;
+    background: linear-gradient(to right, #4a90e2, #50c9c3);
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 15px 25px;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(to right, #50c9c3, #4a90e2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popUp {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
 }

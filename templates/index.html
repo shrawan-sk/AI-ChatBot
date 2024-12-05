@@ -10,47 +10,13 @@
     <div class="chat-container">
         <h1>AI ChatBot</h1>
         <div id="chat-box" class="chat-box"></div>
+        <div id="typing-indicator" class="typing-indicator" style="display: none;">AI is typing...</div>
         <div class="input-container">
             <input id="user-input" type="text" placeholder="Type your message here">
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
 
-    <script>
-        const chatBox = document.getElementById('chat-box');
-
-        function appendMessage(sender, message) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${sender}`;
-            messageDiv.textContent = `${sender}: ${message}`;
-            chatBox.appendChild(messageDiv);
-            chatBox.scrollTop = chatBox.scrollHeight; // Scroll to bottom
-        }
-
-        async function sendMessage() {
-            const userInput = document.getElementById('user-input');
-            const message = userInput.value.trim();
-            if (!message) return;
-
-            appendMessage('User', message);
-            userInput.value = '';
-
-            try {
-                const response = await fetch('/get-response', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message }),
-                });
-                const data = await response.json();
-                if (data.message) {
-                    appendMessage('AI', data.message);
-                } else {
-                    appendMessage('AI', 'Error: Unable to get a response.');
-                }
-            } catch (error) {
-                appendMessage('AI', 'Error: Unable to connect to the server.');
-            }
-        }
-    </script>
+    <script src="/static/scripts.js"></script>
 </body>
 </html>
