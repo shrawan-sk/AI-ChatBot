@@ -21,6 +21,3 @@ An AI-powered chatbot using OpenAI's GPT API. This project provides a text-only 
 
 3. Run the application:
     python app.py
-
-## Deployment
-Deploy easily to platforms like Heroku, AWS, or Google Cloud.
