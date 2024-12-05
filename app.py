@@ -25,25 +25,30 @@ def get_response():
         return jsonify({"error": "No message received"}), 400
 
     try:
-        # New API interface for OpenAI
+        # Use the OpenAI ChatCompletion API
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": user_message},
-            ]
+            ],
+            max_tokens=50,
+            temperature=0.7
         )
         ai_message = response['choices'][0]['message']['content']
         return jsonify({"message": ai_message})
-    except openai.AuthenticationError as e:
+    except openai.error.RateLimitError as e:
+        print(f"Rate Limit Error: {e}")
+        return jsonify({"error": "Rate limit exceeded. Please wait and try again."}), 429
+    except openai.error.AuthenticationError as e:
         print(f"Authentication Error: {e}")
-        return jsonify({"error": "Invalid API key"}), 500
-    except openai.APIError as e:
+        return jsonify({"error": "Invalid API key. Please check your key."}), 401
+    except openai.error.OpenAIError as e:
         print(f"OpenAI API Error: {e}")
-        return jsonify({"error": "API error, try again later"}), 500
+        return jsonify({"error": "API error. Please try again later."}), 500
     except Exception as e:
         print(f"Unexpected Error: {e}")
-        return jsonify({"error": "Unexpected server error"}), 500
+        return jsonify({"error": "Unexpected server error occurred."}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
