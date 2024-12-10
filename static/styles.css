@@ -1,150 +1,181 @@
+/*
+styles.css
+Author: Shrawan Khanal, Abhishekh, Jordan, Arafat
+Last Modified: 2024-12-09
+Description: Contains the styles for the chatbot application, including chat container, messages, user input field, and animations.
+Revision History:
+    v1.0 - Initial styles for chatbot UI (2024-12-02)
+    v1.1 - Added animations and refined layout (2024-12-07)
+    v1.2 - Added comments and optimized design for usability (2024-12-09)
+*/
+
 /* General Body Styling */
+/* Styling for the entire body of the webpage */
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #89f7fe, #66a6ff); /* Soft gradient */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: 'Arial', sans-serif; /* Simple and clean font style */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    background: linear-gradient(135deg, #89f7fe, #66a6ff); /* Soft blue gradient for the background */
+    display: flex; /* Use flexbox to center the content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
 }
 
 /* Chat Container */
+/* Main container for the chatbot */
 .chat-container {
-    width: 550px; /* Slightly wider */
-    height: 750px; /* Taller for more space */
-    background: white;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    animation: fadeIn 1s ease-in-out;
+    width: 550px; /* Set a fixed width for the chat box */
+    height: 750px; /* Set a fixed height for the chat box */
+    background: white; /* White background for contrast */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    border-radius: 15px; /* Rounded corners for smooth appearance */
+    overflow: hidden; /* Prevent overflow */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack child elements vertically */
+    animation: fadeIn 1s ease-in-out; /* Smooth fade-in animation */
 }
 
 /* Heading */
+/* Styling for the chatbot header */
 h1 {
-    background: linear-gradient(to right, #4A90E2, #50C9C3);
-    color: white;
-    text-align: center;
-    margin: 0;
-    padding: 20px;
-    font-size: 28px;
-    letter-spacing: 1px;
+    background: linear-gradient(to right, #4A90E2, #50C9C3); /* Gradient background */
+    color: white; /* White text for contrast */
+    text-align: center; /* Center align the text */
+    margin: 0; /* Remove default margin */
+    padding: 20px; /* Add spacing around the text */
+    font-size: 28px; /* Increase font size */
+    letter-spacing: 1px; /* Add space between letters */
 }
 
 /* Chat Box */
+/* Container for displaying chat messages */
 .chat-box {
-    padding: 20px;
-    height: 600px; /* Increased height */
-    overflow-y: auto;
-    border-bottom: 2px solid #ddd;
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Space between messages */
-    animation: slideIn 0.8s ease-in-out;
+    padding: 20px; /* Add padding inside the chat box */
+    height: 600px; /* Set fixed height for the chat area */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border-bottom: 2px solid #ddd; /* Separator line */
+    display: flex; /* Use flexbox for message layout */
+    flex-direction: column; /* Stack messages vertically */
+    gap: 15px; /* Add spacing between messages */
+    animation: slideIn 0.8s ease-in-out; /* Slide-in animation */
 }
 
 /* Message Styling */
+/* Base styling for chat messages */
 .message {
-    padding: 12px 15px;
-    border-radius: 12px;
-    max-width: 70%;
-    word-wrap: break-word;
-    animation: popUp 0.5s ease-in-out;
+    padding: 12px 15px; /* Add padding around the message */
+    border-radius: 12px; /* Rounded corners for messages */
+    max-width: 70%; /* Limit the message width */
+    word-wrap: break-word; /* Wrap long text */
+    animation: popUp 0.5s ease-in-out; /* Pop-up animation */
 }
 
+/* User's messages */
 .message.User {
-    background: #e0f7fa; /* Soft blue for user */
-    color: #006064;
-    align-self: flex-end;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #e0f7fa; /* Light blue background for user messages */
+    color: #006064; /* Dark text for readability */
+    align-self: flex-end; /* Align user messages to the right */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
 }
 
+/* AI's messages */
 .message.AI {
-    background: #ffe6e6; /* Soft pink for AI */
-    color: #b71c1c;
-    align-self: flex-start;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #ffe6e6; /* Light pink background for AI messages */
+    color: #b71c1c; /* Dark red text for contrast */
+    align-self: flex-start; /* Align AI messages to the left */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
 }
 
 /* Typing Indicator */
+/* Styling for the "AI is typing..." indicator */
 .typing-indicator {
-    font-style: italic;
-    color: gray;
-    text-align: center;
-    margin-bottom: 10px;
-    animation: blink 1.5s infinite;
+    font-style: italic; /* Italicized text */
+    color: gray; /* Neutral gray color */
+    text-align: center; /* Center align the text */
+    margin-bottom: 10px; /* Add spacing below */
+    animation: blink 1.5s infinite; /* Blinking animation */
 }
 
 /* Input Container */
+/* Container for the user input field and send button */
 .input-container {
-    display: flex;
-    margin-top: auto;
-    padding: 15px;
-    background: #f5f5f5;
+    display: flex; /* Use flexbox for layout */
+    margin-top: auto; /* Push the input container to the bottom */
+    padding: 15px; /* Add spacing inside the container */
+    background: #f5f5f5; /* Light gray background */
 }
 
+/* Input Field */
+/* Styling for the user input field */
 input {
-    flex-grow: 1;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px 0 0 5px;
-    font-size: 16px;
-    transition: all 0.3s ease;
+    flex-grow: 1; /* Expand to fill available space */
+    padding: 15px; /* Add padding inside the input field */
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 5px 0 0 5px; /* Rounded corners on the left */
+    font-size: 16px; /* Set font size */
+    transition: all 0.3s ease; /* Smooth transitions */
 }
 
+/* Input Field Focus */
+/* Styling for the input field when focused */
 input:focus {
-    border-color: #4a90e2;
-    outline: none;
-    box-shadow: 0 0 8px rgba(74, 144, 226, 0.5);
+    border-color: #4a90e2; /* Blue border on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.5); /* Add a glowing effect */
 }
 
+/* Send Button */
+/* Styling for the send button */
 button {
-    background: linear-gradient(to right, #4a90e2, #50c9c3);
-    color: white;
-    border: none;
-    padding: 15px 25px;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s ease;
+    background: linear-gradient(to right, #4a90e2, #50c9c3); /* Gradient background */
+    color: white; /* White text for contrast */
+    border: none; /* Remove border */
+    padding: 15px 25px; /* Add padding inside the button */
+    border-radius: 0 5px 5px 0; /* Rounded corners on the right */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Set font size */
+    transition: all 0.3s ease; /* Smooth hover effect */
 }
 
+/* Send Button Hover */
+/* Styling for the send button on hover */
 button:hover {
-    background: linear-gradient(to right, #50c9c3, #4a90e2);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to right, #50c9c3, #4a90e2); /* Reverse gradient on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add shadow effect */
 }
 
 /* Animations */
+/* Fade-in effect */
 @keyframes fadeIn {
     from {
-        opacity: 0;
-        transform: translateY(-20px);
+        opacity: 0; /* Fully transparent */
+        transform: translateY(-20px); /* Move upward */
     }
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1; /* Fully visible */
+        transform: translateY(0); /* Move to original position */
     }
 }
 
+/* Pop-up effect */
 @keyframes popUp {
     from {
-        opacity: 0;
-        transform: scale(0.9);
+        opacity: 0; /* Fully transparent */
+        transform: scale(0.9); /* Slightly smaller */
     }
     to {
-        opacity: 1;
-        transform: scale(1);
+        opacity: 1; /* Fully visible */
+        transform: scale(1); /* Original size */
     }
 }
 
+/* Blinking effect for typing indicator */
 @keyframes blink {
     0%, 100% {
-        opacity: 1;
+        opacity: 1; /* Fully visible */
     }
     50% {
-        opacity: 0.5;
+        opacity: 0.5; /* Half transparent */
     }
 }
